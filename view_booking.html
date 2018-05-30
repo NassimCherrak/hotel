@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/logo.jpg">
+
+    <title>Hotel Booking</title>
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="style/main.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="js/viewbooking.js"></script>
+  </head>
+
+  <body ng-app="AApp" ng-controller="ACtrl">
+
+    <div class="container">
+      <header class="blog-header py-3" ng-include="'layout/header.html'">
+    </header>
+
+      <div class="nav-scroller py-1 mb-2" ng-include="'layout/menu.html'">
+    </div>
+    
+      <main>
+      <section class="jumbotron">
+        <div class="container" ng-repeat="book in booklist">
+          <h4>Room {{ book.room }}</h4>
+          <form class="form-control" method="POST" action="#">
+            <div class="form-group">
+              <label class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1" ng-cloak>{{ book.guest }}</h5>
+                  <span class="mb-2">starts on {{ book.start }} </span>
+                  <span class="mb-2">ends at {{ book.end }} </span>
+                </div>
+                <span>registered by: {{ book.user }}</span>
+              </label>
+              <button type="submit" class="btn btn-primary my-2" ng-click="">Edit</button>
+              <button type="submit" class="btn btn-danger my-2" ng-click="">Remove</button>
+            </div>
+          </form>
+          <hr>
+        </div>
+      </section>
+      </main>
+  </body>
+</html>
