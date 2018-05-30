@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/logo.jpg">
+
+    <title>Hotel Booking</title>
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="style/main.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="js/stats_guests.js"></script>
+  </head>
+
+  <body ng-app="AApp" ng-controller="ACtrl">
+    <div class="container">
+      <header class="blog-header py-3" ng-include="'layout/header.html'">
+    </header>
+
+      <div class="nav-scroller py-1 mb-2" ng-include="'layout/menu.html'">
+    </div>
+    <main>
+      <section class="jumbotron" ng-show="viewlist">
+        <div class="container" ng-repeat="guest in guestlist">
+          <form class="form-control">
+            <div class="form-group">
+              <label class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1" ng-cloak>{{ guest.name }}</h5>
+                  <span class="mb-2">number of bookings {{ guest.number }} </span>
+                </div>
+              </label>
+              <button class="btn btn-primary my-3" ng-click="userInfo(guest.id, guest.name, guest.number)">View Details</button>
+            </div>
+          </form>
+          <hr>
+        </div>
+      </section>
+      <section class="jumbotron" ng-show="!viewlist">
+        <div>
+          <h4>Guest: {{ book.currentguest }}</h4>
+          <span>booked {{ currentnum }} time(s)</span>
+        </div>
+        <br/>
+        <div class="container" ng-repeat="book in guestbookinglist">
+          <h5>Room {{ book.room }}</h5>
+            <div class="form-group">
+              <label class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <span class="mb-2">start: {{ book.start }} </span>
+                  <span class="mb-2">end: {{ book.end }} </span>
+                </div>
+              </label>
+            </div>
+        </div>
+      </section>
+      </main>
+    </div>
+  </body>
+</html>
