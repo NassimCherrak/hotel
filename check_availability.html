@@ -30,19 +30,12 @@
     
       <main>
       <section class="jumbotron">
+        <div class="text-center"><h3>Check Available Rooms</h3></div><br>
         <div class="container">
             <form class="form-control">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="radiodate" id="radiodate1" value="option1" checked>
-                <label class="form-check-label" for="radiodate1">
-                  Date
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="radiodate" id="radiodate2" value="option2">
-                <label class="form-check-label" for="radiodate2">
-                  Date Range
-                </label>
+                <input type="checkbox" class="form-check-input" id="checkdate" ng-click="toggleShowDateOut()">
+                <label class="form-check-label" for="checkdate">add day out</label>
               </div>
               <br/>
               <div class="form-row align-items-center">
@@ -50,7 +43,7 @@
                   <label class="form-check-label">Day in</label>
                   <input type="date" class="form-control mb-2" ng-model="datein" placeholder="">
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" ng-show="showdateout">
                   <label class="form-check-label">Day out</label>
                   <input type="date" class="form-control mb-2" ng-model="dateout" placeholder="">
                 </div>
@@ -62,8 +55,12 @@
             </form>
           </div>
           <br/>
-          <div class="container" ng-repeat="book in bookdatelist">
-            {{ book.room }} {{ book.id }}
+          <div class="container" ng-show="bookdatelist.length > 0">
+            <h5>Rooms :</h5>
+          </div>
+          <br>
+          <div class="container form-group" ng-repeat="book in bookdatelist">
+            <span>{{ book.room }}</span>
           </div>
       </section>
       </main>

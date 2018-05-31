@@ -7,6 +7,8 @@
         $scope.rooms = [];
         $scope.roomlist = [];
 
+        $scope.showdateout = false;
+
         $http.get("include/guests_rooms.php")
           .then(function (response) {
             $scope.guests = response.data.guestdata;
@@ -21,4 +23,21 @@
           }, function (response) {
             console.log("couldn't load");
           });
+
+        $scope.toggleShowDateOut = function() {
+          $scope.showdateout = !$scope.showdateout;
+          if(!$scope.showdateout) {
+            $scope.dateout = "";
+          }
+        }
+
+        $scope.updateMin = function(date) {
+          $scope.formatedMin = formatDate(date);
+          d1 = new Date($scope.datein);
+          d2 = new Date($scope.dateout);
+          if(d1>d2) {
+            $scope.dateout = "";
+          }
+        }
+        
         });

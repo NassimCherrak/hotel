@@ -7,6 +7,8 @@
         $scope.bookingdate = [];
         $scope.bookdatelist = [];
 
+        $scope.showdateout = false;
+
         //search booking with date
         $scope.searchDate = function() {
           $scope.bookingdate = [];
@@ -23,6 +25,10 @@
             }, function (response) {
               console.log("couldn't load");
           });
+        }
+
+        $scope.toggleShowDateOut = function() {
+          $scope.showdateout = !$scope.showdateout;
         }
 
         });

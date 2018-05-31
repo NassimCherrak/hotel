@@ -17,6 +17,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script type="text/javascript" src="js/newbooking.js"></script>
+    <script type="text/javascript" src="js/dateconverter.js"></script>
   </head>
 
   <body ng-app="AApp" ng-controller="ACtrl">
@@ -28,6 +29,7 @@
     </div>
     <main>
       <section class="jumbotron">
+        <div class="text-center"><h3>Add Booking</h3></div><br>
         <div class="container">
             <form class="form-control" method="POST" action="add_booking.php">
               <br/>
@@ -38,9 +40,9 @@
                   <option ng-repeat="guest in guestlist" value="{{ guest.name }}">
                 </datalist>
               </div>
-              <br/>
+              <hr/>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="checkdate">
+                <input type="checkbox" class="form-check-input" id="checkdate" ng-click="toggleShowDateOut()">
                 <label class="form-check-label" for="checkdate">add day out</label>
               </div>
               <br/>
@@ -51,15 +53,15 @@
                 <div class="form-row col-sm-8 align-items-center">
                   <div class="col-auto">
                     <label class="form-check-label">Day in</label>
-                    <input type="date" name="datein" class="form-control mb-2" ng-model="datein" placeholder="" required>
+                    <input type="date" name="datein" class="form-control mb-2" ng-model="datein" ng-change="updateMin(datein)" placeholder="" required>
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto" ng-show="showdateout">
                     <label class="form-check-label">Day out</label>
-                    <input type="date" name="dateout" class="form-control mb-2" ng-model="dateout" placeholder="">
+                    <input type="date" name="dateout" class="form-control mb-2" ng-model="dateout" min="{{ formatedMin }}" placeholder="">
                   </div>
                 </div>
               </div>
-              <br/>
+              <hr/>
               <div class="form-group row">
                 <label class="col-sm-2" for="inlineFormCustomSelect">Room number: </label>
                 <input list="roomselect" name="room" required>

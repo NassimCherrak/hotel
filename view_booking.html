@@ -16,6 +16,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script type="text/javascript" src="js/viewbooking.js"></script>
+    <script type="text/javascript" src="js/dateconverter.js"></script>
   </head>
 
   <body ng-app="AApp" ng-controller="ACtrl">
@@ -26,9 +27,9 @@
 
       <div class="nav-scroller py-1 mb-2" ng-include="'layout/menu.html'">
     </div>
-    
       <main>
       <section class="jumbotron" ng-if="viewbooking">
+        <div class="text-center"><h3>View Bookings</h3></div><br>
         <div class="container" ng-repeat="book in booklist">
           <h4>Room {{ book.room }}</h4>
           <form class="form-control" method="POST" action="delete_booking.php">
@@ -48,6 +49,9 @@
           </form>
           <hr>
         </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-default" ng-click="showMore()" ng-show="!lastpage">Show More</button>
+        </div>
       </section>
       <section class="jumbotron" ng-if="!viewbooking">
         <form class="form-control" method="POST" action="update_booking.php">
@@ -61,7 +65,7 @@
               </div>
               <hr>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="checkdate">
+                <input type="checkbox" class="form-check-input" ng-click="toggleShowDateOut()" id="checkdate" checked>
                 <label class="form-check-label" for="checkdate">add day out</label>
               </div>
               <br/>
@@ -74,7 +78,7 @@
                     <label class="form-check-label">Day in</label>
                     <input type="date" name="datein" class="form-control mb-2" ng-value="currentdatein" required>
                   </div>
-                  <div class="col-auto">
+                  <div class="col-auto" ng-show="showdateout">
                     <label class="form-check-label">Day out</label>
                     <input type="date" name="dateout" class="form-control mb-2" ng-value="currentdateout">
                   </div>
@@ -90,6 +94,7 @@
                   <option ng-repeat="room in roomlist" value="{{ room.name }}">
                 </datalist>
               </div>
+              {{currentdateout}}
               <div class="form-check">
                 <button class="btn btn-primary my-2" ng-click="">Update Booking</button>
               </div>

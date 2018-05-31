@@ -28,8 +28,16 @@
     </div>
     <main>
       <section class="jumbotron">
-        <div class="container">
-          guests: {{ guests }}, total booking: {{ past+current+future }}, past: {{ past }}, current: {{ current }}, future: {{ future }}
+        <div class="text-center"><h3>Hotel Statistics</h3></div><br>
+        <div class="container center-message">
+          <h3>Guests</h3><br>
+          <p>The Hotel welcomed a total of {{ guests }} Guest(s)</p>
+          <hr><br>
+          <h3>Bookings</h3><br>
+          <p>All Bookings recorded: {{ past+current+future }}</p>
+          <p>Archived: {{ past }}</p>
+          <p>Ongoing: {{ current }}</p>
+          <p>Planned: {{ future }}</p>
         </div>
       </section>
     </main>
