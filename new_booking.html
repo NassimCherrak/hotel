@@ -16,7 +16,7 @@
     <link href="style/main.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script type="text/javascript" src="js/stats_guests.js"></script>
+    <script type="text/javascript" src="js/newbooking.js"></script>
   </head>
 
   <body ng-app="AApp" ng-controller="ACtrl">
@@ -28,7 +28,50 @@
     </div>
     <main>
       <section class="jumbotron">
-        
+        <div class="container">
+            <form class="form-control" method="POST" action="add_booking.php">
+              <br/>
+              <div class="form-group row">
+                <label class="col-sm-2" for="inlineFormCustomSelect">Guest Name: </label>
+                <input list="guestselect" name="guestname" required>
+                <datalist class="col-sm-2" id="guestselect">
+                  <option ng-repeat="guest in guestlist" value="{{ guest.name }}">
+                </datalist>
+              </div>
+              <br/>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkdate">
+                <label class="form-check-label" for="checkdate">add day out</label>
+              </div>
+              <br/>
+              <div class="form-group row">
+                <div class="col-sm-2">
+                  <label>select date(s): </label>
+                </div>
+                <div class="form-row col-sm-8 align-items-center">
+                  <div class="col-auto">
+                    <label class="form-check-label">Day in</label>
+                    <input type="date" name="datein" class="form-control mb-2" ng-model="datein" placeholder="" required>
+                  </div>
+                  <div class="col-auto">
+                    <label class="form-check-label">Day out</label>
+                    <input type="date" name="dateout" class="form-control mb-2" ng-model="dateout" placeholder="">
+                  </div>
+                </div>
+              </div>
+              <br/>
+              <div class="form-group row">
+                <label class="col-sm-2" for="inlineFormCustomSelect">Room number: </label>
+                <input list="roomselect" name="room" required>
+                <datalist class="col-sm-2" id="roomselect">
+                  <option ng-repeat="room in roomlist" value="{{ room.name }}">
+                </datalist>
+              </div>
+              <div class="form-check">
+                <button class="btn btn-primary my-2" ng-click="searchDate()">Comfirm Booking</button>
+              </div>
+            </form>
+          </div>
       </section>
       </main>
     </div>
