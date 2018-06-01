@@ -9,6 +9,7 @@
 
         $scope.showdateout = false;
 
+        //load guest and room names to fill the select options
         $http.get("include/guests_rooms.php")
           .then(function (response) {
             $scope.guests = response.data.guestdata;
@@ -24,6 +25,7 @@
             console.log("couldn't load");
           });
 
+        //checkbox to show/hide the option of the second date (date of the end of a booking)
         $scope.toggleShowDateOut = function() {
           $scope.showdateout = !$scope.showdateout;
           if(!$scope.showdateout) {
@@ -31,6 +33,7 @@
           }
         }
 
+        //forces the minimum date of dateout to datein to avoid having dateout<datein
         $scope.updateMin = function(date) {
           $scope.formatedMin = formatDate(date);
           d1 = new Date($scope.datein);

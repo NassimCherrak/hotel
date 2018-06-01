@@ -1,14 +1,18 @@
 <?php
 
-//header("Access-Control-Allow-Origin: *");
-//header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
 
 include 'login.php';
 
+//number of guests
 $sql_guest = "SELECT COUNT(*) as c FROM guest";
 
+//past bookings
 $sql_booking_past = "SELECT COUNT(*) as bp FROM booking WHERE end_date < DATE_SUB(NOW(), INTERVAL 15 MINUTE)";
+//currently booked rooms
 $sql_booking_current = "SELECT COUNT(*) as bc FROM booking WHERE DATE_SUB(NOW(), INTERVAL 15 MINUTE) BETWEEN start_date AND end_date";
+//future bookings
 $sql_booking_future = "SELECT COUNT(*) as bf FROM booking WHERE start_date > DATE_SUB(NOW(), INTERVAL 15 MINUTE)";
 
 $outp = "";

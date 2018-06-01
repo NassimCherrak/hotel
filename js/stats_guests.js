@@ -13,6 +13,8 @@
         $scope.guestbookinglist = [];
 
         $scope.viewlist = true;
+
+        //loads guests and the number of times they booked a room in the hotel
         $http.get("include/booking_by_guest.php")
           .then(function (response) {
             $scope.guests = response.data.records;
@@ -24,6 +26,7 @@
             console.log("couldn't load");
           });
 
+          //display the guest to view his details (history of booking)
           $scope.userInfo = function(id, name, num) {
             $scope.viewlist = false;
             $scope.currentguest = name;

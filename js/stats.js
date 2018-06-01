@@ -8,6 +8,7 @@
         $scope.current;
         $scope.future;
 
+        // load statistic information
         $http.get("include/stats.php")
           .then(function (response) {
             $scope.datares = response.data.records;

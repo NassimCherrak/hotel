@@ -8,6 +8,7 @@ include 'login.php';
 $booking_time_in = $_GET['timein'];
 $booking_time_out = $_GET['timeout'];
 
+//query to check if the room isn't already booked for the given date range
 $sql = "SELECT name, room.id as room FROM room WHERE room.id NOT IN (SELECT id_room FROM booking WHERE end_date > DATE_SUB(NOW(), INTERVAL 15 MINUTE)
         AND (
             (start_date BETWEEN '". $booking_time_in ."' AND '". $booking_time_out ."')

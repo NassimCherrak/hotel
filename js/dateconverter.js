@@ -1,3 +1,4 @@
+// convert date to the yyyy-mm-dd format
 function formatDate(date) {
 	var d = new Date(date),
 	month = '' + (d.getMonth() + 1),

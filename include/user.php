@@ -7,6 +7,7 @@ include 'login.php';
 
 $guest = $_GET['id'];
 
+//query to get the booking history of a guest
 $sql = "SELECT booking.id, booking.start_date, booking.end_date, guest.name as guest, room.name as room, user.name as user FROM booking 
 		INNER JOIN guest ON guest.id = booking.id_guest
 		INNER JOIN room ON room.id = booking.id_room

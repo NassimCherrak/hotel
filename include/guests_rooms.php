@@ -5,6 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 include 'login.php';
 
+//query to get the list of guests
 $sql = "SELECT * FROM guest";
 
 $result = $conn->query($sql);
@@ -18,6 +19,7 @@ while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
 
 $outp1 ='{"guestdata":['.$outp.'],';
 
+//query to get he list of rooms
 $sql = "SELECT * FROM room";
 
 $result = $conn->query($sql);

@@ -19,9 +19,11 @@ $number_of_pages = 1;
 
 $offset = ($page - 1) * $items_per_page;
 
+//query to count the number of current and upcoming bookings(used to count pages)
 $sql_count = "SELECT COUNT(*) as c FROM booking";
 $sql_count .= " WHERE end_date > DATE_SUB(NOW(), INTERVAL 15 MINUTE)";
 
+//query to find the booking information for current and upcoming bookings
 $sql = "SELECT booking.id, booking.start_date, booking.end_date, guest.name as guest, booking.id_guest as idguest, room.name as room, booking.id_room as idroom, user.name as user FROM booking 
 		INNER JOIN guest ON guest.id = booking.id_guest
 		INNER JOIN room ON room.id = booking.id_room

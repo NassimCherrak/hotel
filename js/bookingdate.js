@@ -27,6 +27,7 @@
           });
         }
 
+        //checkbox to show/hide the option of the second date
         $scope.toggleShowDateOut = function() {
           $scope.showdateout = !$scope.showdateout;
         }
