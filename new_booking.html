@@ -64,10 +64,9 @@
               <hr/>
               <div class="form-group row">
                 <label class="col-sm-2" for="inlineFormCustomSelect">Room number: </label>
-                <input list="roomselect" name="room" required>
-                <datalist class="col-sm-2" id="roomselect">
-                  <option ng-repeat="room in roomlist" value="{{ room.name }}">
-                </datalist>
+                <select name="room" class="col-sm-2" id="roomselect" required>
+                  <option ng-repeat="room in roomlist" value="{{ room.name }}">{{ room.name }}</option>
+                </select>
               </div>
               <div class="form-check">
                 <button class="btn btn-primary my-2" ng-click="searchDate()">Comfirm Booking</button>
